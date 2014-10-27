@@ -31,9 +31,9 @@ ___
 ---
 
 # 今日話すこと
-### 1. どオンプレで作られたサービスをAWSに移設しました
-### 2. 移設するにあたって、大きく運用環境を変えました
-### 3. AWS x Mackerel がとても捗ります
+- どオンプレで作られたサービスを AWS に移設しました
+- 移設するにあたって、大きく運用環境を変えました
+- AWS x Mackerel でとても捗っています
 
 ---
 
@@ -52,10 +52,10 @@ ___
 # 移行前の環境
 - Single Segment
 - データセンター提供のマネージドDNS
-- 箱物ロードバランサ / 大手メーカー製サーバ
+- 箱物ロードバランサ / 大手メーカー製サーバ / 一部自作機
 - CentOS 6.x / cobbler / puppet
 - Hive / MapReduce
-- MySQL / Redis おじさんが用意/運用
+- MySQL / Redis おじさんが用意 / 運用
 - Nagios / CloudForecast
 - 足元のディスクに吐いたログをでっかいサーバに収集して集計というWeb1.0
 
@@ -69,6 +69,11 @@ ___
 ## "調達"と"実装スピード"
 ## インフラおじさんへの依存
 
+___
+
+# 本音
+## オンプレに疲れた
+
 ---
 
 # 移行で変えたこと
@@ -76,6 +81,7 @@ ___
 - Single Segment -> Multi-AZ
 - マネージドDNS -> Route53
 - 箱物LB -> Elastic LoadBalancing
+- 物理サーバ -> EC2
 - CentOS -> Ubuntu
 - cobbler -> cloud-init
 - puppet -> ansible
@@ -84,6 +90,12 @@ ___
 - Redis -> ElastiCache(Redis)
 - Docker を一部でつかい始める
 - Nagios+CloudForecast -> Mackerel
+
+___
+
+# つまり
+# アプリ以外全部
+# 変えた
 
 ___
 
@@ -126,6 +138,22 @@ ___
 
 ___
 
+## 物理サーバ -> EC2
+- NAT インスタンス不使用
+- すべての EC2 インスタンスに Public IP を付与
+- アクセスコントロールは Security Group で確保
+- 個別のインスタンスに名前は付けない
+ - よって内部 DNS も廃止 / IP 付与も DHCP 任せ
+
+___
+
+## 命名が必要なものは
+## マネージドサービスを使う
+## or
+## EIP をつけて個別管理
+
+___
+
 ## CentOS -> Ubuntu
 - 事例の時は独自の AMI を作っていた
  - update への追随がダルくなるのでやめたかった
@@ -136,7 +164,8 @@ ___
 
 ___
 
-# まだCentOSで消耗してるの?
+# まだCentOSで
+# 消耗してるの?
 
 ___
 
@@ -160,6 +189,7 @@ ___
 
 # Ansible最大の利点
 ## Dynamic Inventory 機能で Mackerel 連携が簡単
+> $ ansible -i mackerel.py all -m ping -u foobar
 
 ___
 
@@ -180,16 +210,25 @@ ___
 ___
 
 ## Redis -> ElastiCache(Redis)
-- Multi-AZ 対応しているので自分でやるのやめた
-- 一部データの長期保持が必要だったがこれで解決
-- auto failover サポートでさらに安心
+- 冗長化や自動バックアップ対応なので独自構築をやめた
+- auto failover サポートが発表されてさらに安心
 
 ___
 
 ## Dockerを使いはじめる
-- fluentd の collector を Docker で動かしています
+- ついに実用段階に入った Docker
+ - fluentd の collector を Docker で動かしています
 - Deploy は cap で docker pull -> docker stop -> docker run するだけ
-- graceful restart みたいなのが必要なコンポーネントにはまだ課題がある
+> $ cap deploy:container:td-agent
+- graceful restart が必要なものの利用にはまだ課題がある
+
+___
+
+## Dockerを使いはじめる
+- S3 バックエンドでプライベートレジストリを構築
+ - http://aws.typepad.com/sajp/2014/06/eb-docker-private-repo.html
+
+![docker-workflow](images/docker-workflow.png)
 
 ___
 
@@ -208,15 +247,21 @@ ___
 ---
 
 # AWS x Mackerel
-- 軽いデモ
+- 実際運用しているやつ
+ - https://mackerel.io/
+
+___
+
+# AWS x Mackerel
+# awesome
 
 ---
 
 # まとめ
 
-- どオンプレで作られたサービスをAWSに移設しました
+- どオンプレで作られたサービスを AWS に移設しました
 - 移設するにあたって、大きく運用環境を変えました
-- AWS x Mackerel がとても捗ります
+- AWS x Mackerel でとても捗っています
 
 ---
 
