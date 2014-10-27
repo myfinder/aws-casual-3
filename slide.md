@@ -202,6 +202,20 @@ ___
 
 ___
 
+## BigQuery
+完璧ではない
+
+![bq-api-error](images/bq-api-error.png)
+
+___
+
+## BigQuery
+お茶目
+
+![google500](images/google500.png)
+
+___
+
 ## MySQL -> RDS(MySQL)
 - 事例のタイミングではオペレーションが変わるのを避けたかった
 - オンプレ脳で作ったネットワーク&オンプレとの連携を考えなくてよくなったので活用
