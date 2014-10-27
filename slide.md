@@ -38,7 +38,7 @@ ___
 ---
 
 # 移行前の環境
-オンプレ+S3/CloudFront
+オンプレ+S3/CloudFront(とか他のCDN)
 
 ![servers](images/servers.png) ![s3](images/s3.png) ![cf](images/cf.png)
 
@@ -94,8 +94,8 @@ ___
 ___
 
 # つまり
-# アプリ以外全部
-# 変えた
+# アプリ以外
+# 全部変えた
 
 ___
 
@@ -141,7 +141,7 @@ ___
 ## 物理サーバ -> EC2
 - NAT インスタンス不使用
 - すべての EC2 インスタンスに Public IP を付与
-- アクセスコントロールは Security Group で確保
+- アクセスコントロールは Security Group で設定
 - 個別のインスタンスに名前は付けない
  - よって内部 DNS も廃止 / IP 付与も DHCP 任せ
 
