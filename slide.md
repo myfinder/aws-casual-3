@@ -54,8 +54,8 @@ ___
 - データセンター提供のマネージドDNS
 - 箱物ロードバランサ / 大手メーカー製サーバ / 一部自作機
 - CentOS 6.x / cobbler / puppet
-- Hive / MapReduce
-- MySQL / Redis おじさんが用意 / 運用
+- Hive / MapReduce おじさんが構築 / 運用
+- MySQL / Redis おじさんが構築 / 運用
 - Nagios / CloudForecast
 - 足元のディスクに吐いたログをでっかいサーバに収集して集計というWeb1.0
 
@@ -67,7 +67,11 @@ ___
 
 # 懸案
 ## "調達"と"実装スピード"
-## インフラおじさんへの依存
+
+___
+
+## 急速に立ち上がっている状況
+![high-growth](images/high-growth.png)
 
 ___
 
@@ -76,7 +80,7 @@ ___
 
 ---
 
-# 移行で変えたこと
+## 移行で変えた点
 - アプリケーションサーバのつくり
 - Single Segment -> Multi-AZ
 - マネージドDNS -> Route53
@@ -94,19 +98,21 @@ ___
 ___
 
 # つまり
-# アプリ以外
-# 全部変えた
+# アプリ以外全部
 
 ___
 
-# アプリケーションサーバ
+# アプリサーバ
 - 足元のストレージに吐いたログをscpとかで収集して集計していた
 - アプリケーションからfluentdへログを投げる形に
+
+![fluentd](images/fluentd.png)
 
 ___
 
 # Single Segment
-過去の例はオンプレ事情を勘案して構築した
+過去の例はオンプレ事情の考慮が必要だった
+
 ![aws_old](images/aws_old.png)
 http://aws.amazon.com/jp/solutions/case-studies/freakout/
 
@@ -126,7 +132,8 @@ ___
 
 ## マネージドDNS -> Route53
 - 履歴機能とかはあったけど余りプログラマティックではなかった
-- Roadworkerで履歴管理できるのでさくっと引越
+ - ヤバい点は NS レコードを変更できない(！)こと
+- Roadworkerを使えば git で管理できるのでさくっと引越
 
 ___
 
@@ -238,25 +245,33 @@ ___
 
 ## Dockerを使いはじめる
 - ついに実用段階に入った Docker
- - fluentd の collector を Docker で動かしています
+ - fluentd / Norikra をコンテナデプロイしてます
 - Deploy は cap で docker pull -> docker stop -> docker run するだけ
-> $ cap deploy:container:td-agent
+```
+$ cap deploy:container:td-agent
+$ cap deploy:container:norikra
+```
 - graceful restart が必要なものの利用にはまだ課題がある
+- 後述の private registry は build 忘れや push 忘れが発生しがちなので Docker Hub の有料プランに build を押し付けたい
 
 ___
 
 ## Dockerを使いはじめる
-- S3 バックエンドでプライベートレジストリを構築
- - http://aws.typepad.com/sajp/2014/06/eb-docker-private-repo.html
-
+S3 バックエンドでプライベートレジストリを構築
 ![docker-workflow](images/docker-workflow.png)
 
 ___
 
-## Nagios + CloudForecast -> Mackerel + Slack
-- オンプレではサーバリストの管理をどうするこうするという問題がついて回ってきていた
-- EC2移行に際して、roleベースでの管理に移行してサーバに命名することをやめた
- - 個別のサーバにログインするオペレーションをなくしていく
+## S3 + Private Registry
+- SA さんの blog に書いてあった手法
+ - http://aws.typepad.com/sajp/2014/06/eb-docker-private-repo.html
+
+___
+
+## RackTables + Nagios + CloudForecast -> Mackerel
+- サーバリストの管理/連携で消耗
+- role ベースでの管理に移行してサーバに命名することをやめた
+ - 個別のサーバにログインするオペレーションは基本しない
 
 ___
 
@@ -265,16 +280,31 @@ ___
 
 携帯がアラートメールでうめつくされるみたいなのもなくなった
 
+___
+
+## "デフォルトでSlack"
+![oranie](images/oranie.png)
+
 ---
 
 # AWS x Mackerel
-- 実際運用しているやつ
- - https://mackerel.io/
+- 実際運用しているやつから抜粋
 
 ___
 
-# AWS x Mackerel
-# awesome
+# グラフの連続性
+当初8ノードで運用開始
+
+___
+
+## cloud-init で
+## mackerel-agent を
+## install すれば捗る
+
+___
+
+# ![aws-icon.png](images/aws-icon.png) x ![mackerel-icon](images/mackerel-icon.png)
+# advance your ops
 
 ---
 
