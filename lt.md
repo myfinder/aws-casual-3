@@ -14,15 +14,21 @@ ___
 
 # MySQL Casual Talks vol.7
 - <span style="color: red">12/12(金)</span>開催
-- 参加登録してね
+- Zussar力が低くて応募できないので後でどうにかします
 - トーク/LTネタがある方はお気軽に^^
+
+---
+
+# <span style="color: red">注意事項</span>
+## AWS Casual だけど
+## BigQuery のBK話をします
 
 ---
 
 ## 先にまとめ
 ### 前述の通り我々は BigQuery を選択しました
 ### スモールデータほど BigQuery は活用できます
-### ほんとうに <span style="color: red">Big</span> になってきたら <span style="color: red">Redhift</span> か Hadoop おじさんを採用しましょう
+### ほんとうに <span style="color: red">Big</span> になってきたら <span style="color: red">Redhift</span> か <span style="color: red">Hadoop おじさん</span>を採用しましょう
 
 ---
 
@@ -43,10 +49,14 @@ ___
 
 ---
 
-# 課題
+## 課題
 いままで Hadoop おじさんたちにお願いしていたログ集計を開発者側でコントロールしたい
 
-でもログ置場や集計基盤の設計構築に悩みたくないわがままボディ
+でもログ置場や集計基盤の設計構築に悩みたくない<span style="color: red">わがままボディ</span>
+
+---
+
+## というのを解決したい
 
 ---
 
@@ -124,6 +134,7 @@ ___
 
 ## BigQuery
 最近 timestamp 型をサポート
+
 fluent-plugin-bigquery も 0.2.4 からサポート
 
 ![ts](images/schema.png)
@@ -141,9 +152,14 @@ fluent-plugin-bigquery も 0.2.4 からサポート
 ---
 
 # BigQuery :)
+## そして
 ## 我々は BigQuery を選んだ
 ## これが<span style="color: red">辛い戦い</span>の
 ## 始まりだとも知らず
+
+---
+
+# BigQueryェ...
 
 ___
 
