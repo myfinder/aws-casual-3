@@ -28,7 +28,7 @@ ___
 ## 先にまとめ
 ### 前述の通り我々は BigQuery を選択しました
 ### スモールデータほど BigQuery は活用できます
-### ほんとうに <span style="color: red">Big</span> になってきたら <span style="color: red">Redhift</span> か <span style="color: red">Hadoop おじさん</span>を採用しましょう
+### ほんとうに <span style="color: red">Big</span> になってきたら <span style="color: red">Redhift</span> か <span style="color: red">Hadoop エンジニア</span>を採用しましょう
 
 ---
 
@@ -50,9 +50,9 @@ ___
 ---
 
 ## 課題
-いままで Hadoop おじさんたちにお願いしていたログ集計を開発者側でコントロールしたい
+いままで Hadoop エンジニアさんたちにお願いしていたログ集計を開発者側でコントロールしたい
 
-でもログ置場や集計基盤の設計構築に悩みたくない<span style="color: red">わがままボディ</span>
+でもログ置場や集計基盤の設計構築に悩みたくないという<span style="color: red">わがままボディ</span>
 
 ---
 
@@ -255,7 +255,7 @@ ___
 ## まとめ
 ### 現在は BigQuery を選択して利用しています
 ### そんなに Big じゃない人たちには BigQuery 楽でいいかと思います
-### ほんとうに <span style="color: red">Big</span> になって設計や細かい管理が必要になってきたら <span style="color: red">Redhift</span> か <span style="color: red">Hadoop おじさん</span>を採用しましょう
+### ほんとうに <span style="color: red">Big</span> になって設計や細かい管理が必要になってきたら <span style="color: red">Redhift</span> か <span style="color: red">Hadoop エンジニア</span>を採用しましょう
 
 ___
 

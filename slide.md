@@ -60,18 +60,10 @@ ___
 # どしどし<span style="color: red">お申込み</span>
 # ください
 
-___
-
-# 取り急ぎ
-# 社会人としての
-# 勤めを<span style="color: red">果たした</span>
-
 ---
 
 # 移行前の環境
 オンプレ+S3/CloudFront(とか他のCDN)
-
-![servers](images/servers.png) ![s3](images/s3.png) ![cf](images/cf.png)
 
 ___
 
@@ -80,8 +72,8 @@ ___
 - データセンター提供のマネージドDNS
 - 箱物ロードバランサ / 大手メーカー製サーバ / 一部自作機
 - <span style="color: red">CentOS</span> 6.x / cobbler / puppet / RackTables
-- <span style="color: red">Hadoop おじさん</span>が構築 / 運用
-- <span style="color: red">MySQL/Redis おじさん</span>が構築 / 運用
+- <span style="color: red">Hadoop 担当</span>が構築 / 運用
+- <span style="color: red">MySQL/Redis 担当</span>が構築 / 運用
 - Nagios / CloudForecast / GrowthForecast
 - 足元のディスクに吐いたログを<span style="color: red">でっかいサーバに収集</span>して集計
 
@@ -104,11 +96,6 @@ ___
 # オンプレ
 # <span style="color: red">すぐ調達</span>できない
 # 厳しい＞＜
-
-___
-
-## 本音
-### オンプレおじさん業に<span style="color: red">疲れた</span>
 
 ---
 
@@ -203,11 +190,6 @@ ___
  - 使ってた Travis CI も Ubuntu だし
 - 独自の yum リポジトリとか作っていたけどそういうのを捨てた
  - 思い切って捨ててみたら実はそれほど必要なかった
-
-___
-
-# まだCentOSで
-# 消耗してるの?
 
 ___
 
