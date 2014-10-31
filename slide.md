@@ -337,7 +337,7 @@ ___
 
 ___
 
-# Norikra
+# <span style="color: red">Norikra</span>
 # to
 # Mackerel
 
@@ -345,6 +345,11 @@ ___
 
 ## <span style="color: red">fluent-plugin-(norikra|mackerel)</span>でイナフ
 ![norikra](images/norikra.png)
+
+___
+
+## <span style="color: red">分速</span>で売上/支払を見る
+![growth](images/agency-media.png)
 
 ___
 
@@ -365,6 +370,7 @@ ___
 - <span style="color: red">"どオンプレ環境"</span>で作ったサービスをAWSへ移設できました
 - 移設するにあたって、運用環境を~~やりたい放題に~~<span style="color: red">大きく</span>変えました
 - <span style="color: red">AWS x Mackerel</span> でとても捗っています
+- MTBurnはサーバサイド/スマートフォンのエンジニアを<span style="color: red">募集</span>してます
 - <span style="color: red">MySQL Casual</span> もよろしくお願いします
 
 ---
