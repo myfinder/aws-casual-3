@@ -212,18 +212,12 @@ ___
 
 ___
 
-# 失敗した
-# 失敗した
-# 失敗した
-
-___
-
 # 結果
 ![away](images/away.png)
 
 ___
 
-# <span style="color: red">消</span>える＼(^o^)／
+# <span style="color: red">消</span>える
 
 ___
 
